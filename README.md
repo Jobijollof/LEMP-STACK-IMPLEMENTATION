@@ -14,15 +14,15 @@ LEMP is an open-source web application stack used to develop web applications. T
 # Create an Ec2 instance 
 *Select region (and launch a new EC2 instance of t2.micro family with Ubuntu Server 20.04 LTS (HVM)*
 
-*Create a Key pair while creating the EC2 instance (in this case i created a .pem key to ssh into my instance)*
+*Create a Key pair while creating the EC2 instance (download a .pem or .ppk key to ssh or use putty respectively to connect to the instance)*
 
-*to connect to the Ec2 instance, run the following command*
+*to connect to the Ec2 instance via ssh run the following command on power shell*
 
 `ssh -i "task_one.pem" ubuntu@ec.<Public-IP>.compute-1.amazonaws.com`
 
 # Step 1. Install Nginx Web Server
 
-To update server's package index run
+To update server's package index run:
 
 `sudo apt update`
 
@@ -74,13 +74,13 @@ Start the interactive script by running:
 
 `sudo mysql_secure_installation`
 
-This will command will ask if you want to configure the VALIDATE PASSWORD PLUGIN.
+This command will ask if you want to configure the VALIDATE PASSWORD PLUGIN.
 Note: Enabling this feature is something of a judgment call. If enabled, passwords which don’t match the specified criteria will be rejected by MySQL with an error. It is safe to leave validation disabled, but you should always use strong, unique passwords for database credentials.
 Answer Y for yes, or anything else to continue without enabling.
 
 ![password validation](./images/validate-password.png)
 
-If your answer is “yes”, you’ll be asked to select a level of password validation. Keep in mind that if you enter 2 for the strongest level, you will receive errors when attempting to set any password which does not contain numbers, upper and lowercase letters, and special characters, or which is based on common dictionary words e.g PassWord.1.
+If your answer is “yes”, you’ll be asked to select a level of password validation. It is advisable to pick 0 Keeping in mind that if you enter 2 for the strongest level, you will receive errors when attempting to set any password which does not contain numbers, upper and lowercase letters, and special characters, or which is based on common dictionary words e.g PassWord.1.
 There are three levels of password validation policy:
 
 `LOW	Length >= 8
@@ -186,7 +186,7 @@ Now go to your browser and try to open your website URL using IP address:
 ![Echo](./images/nginx-hosted.png)
 
 # STEP 5.  Testing  PHP with Nginx
-To validate that Nginx can correctly hand .php files off to your PHP processor. We will ceate a test PHP file in our document root. Open a new file called info.php within our document root in our nano text editor:
+To validate that Nginx can correctly handle .php files off to your PHP processor. We will ceate a test PHP file in our document root. Open a new file called info.php within our document root in our nano text editor:
 
 
 `sudo nano /var/www/projectLEMP/info.php`
@@ -249,7 +249,7 @@ Next, we’ll create a test table named todo_list. From the MySQL console,
 Run the next command to move into the created database
 
 `USE example_database`
-Theout put for this is database cahanged.
+The output for this command is database changed.
 
 To create a table called todo_list run following command
 
@@ -260,7 +260,6 @@ mysql> PRIMARY KEY(item_id)
 mysql> );
 
 We will run the next command to insert  rows of content in the test table. We may repeat the next command a few times, using different VALUES:
-
 
 `INSERT INTO example_database.todo_list (content) VALUES ("My first important item");`
 
